@@ -1,0 +1,176 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+.header{
+  background-color: rgba(0,0,0,0.7);
+  position: relative;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  .left{
+    flex-basis: 10%;
+    height: 100%;
+    .logo{
+      .img_logo{
+        width: 150px;
+        height: 150px;
+      }//img_logo
+    }//logo
+  }//left
+  .right{
+    flex-basis: 90%;
+    display: flex;
+    flex-direction: column;
+    .name{
+      margin-left: 30px;
+      padding-top: 20px;
+      .no-underline{text-decoration:none !important;}
+      h1{
+        font-weight: bold;
+        font-size: 1.6rem;
+        color: white;
+      }//h1
+      h2{
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: white;
+      }//h2
+    }//name
+    .team_name{
+      margin-left: 30px;
+      height: 40%;
+      color: white;
+      font-weight: bold;
+    }//team_name
+    .menu{
+      padding-left: 30px;
+      background-color: rgba(0,0,0,0.5);
+      width: 100%;
+      height: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      .no-underline{
+        text-decoration:none !important;
+        color: white;
+      }//no-underline
+      .no-underline:hover{
+        text-decoration:none !important;
+        // color: rgba(107,184,254,1);
+        color: rgba(200,0,10,1);
+      }//no-underline
+      ul{
+        list-style: none;
+        padding-left: 0;
+        li{
+          display: inline-block;
+          margin: 0 10px;
+        }//li
+        li:first-child{
+          margin-left: 0;
+        }//li:first-child
+      }//ul
+    }//menu
+  }//right
+}//header
+
+.content_yield{
+  min-height: 850px;
+}
+.footer{
+  position: absolute;
+  top: 1600px;
+  left: 0;
+  width: 100%;
+  height: 205px;
+  background-color: rgba(47,22,28,255);
+  display: flex;
+  flex-direction: column;
+  .top{
+    flex-basis: 50%;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: center;
+    .img{
+      width: 100px;
+      height: 100px;
+    }//img
+    .team_name{
+      padding-top: 20px;
+      padding-left: 10px;
+      color: white;
+      h3{
+        font-family: serif;
+      }//h3
+      p{
+        font-family: Times New Roman
+      }//p
+    }//team_name
+  }//top
+  .bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .menu{
+      padding-top: 20px;
+      text-align: center;
+      ul{
+        list-style: none;
+        .no-underline{
+          text-decoration:none !important;
+          color: white;
+        }//no-underline
+        .no-underline:hover{
+          text-decoration:none !important;
+          // color: rgba(107,184,254,1);
+          color: rgba(200,0,10,1);
+        }//no-underline
+        li{
+          margin-right: 30px;
+          display: inline-block;
+        }//li
+        li:last-child{
+          margin-right: 0px;
+        }//li:last-child
+      }//ul
+    }//menu
+    .copyright{
+      color: white;
+      text-align: center;
+      padding-left: 50px;
+      display: flex;
+      .p_copyright{
+        flex-basis: 95%;
+        font-size: 0.8rem;
+        padding-left: 50px;
+      }//p_copyright
+      .to_top{
+        flex-basis: 5%;
+        background-color: white;
+        color: rgba(110,0,10,1);
+        font-weight: bold;
+        font-size: 0.8rem;
+      }//to_top
+    }//Copyright
+  }//bottom
+}//footer
