@@ -1,0 +1,127 @@
+<div class="wrapper_schedules_index">
+  <div class="main_container">
+    <div class="container">
+      <h3 class="schedule_title">スケジュール</h3>
+      <table>
+        <thead>
+          <tr>
+            <% if current_user && current_user.admin?%>
+            <th>タイトル</th>
+            <th>時間</th>
+            <% end %>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @schedules.each do |schedule| %>
+            <tr>
+              <% if current_user && current_user.admin?%>
+              <td><%= schedule.title %></td>
+              <td><%= schedule.start_time.strftime("/%Y-%m-%d %H:%M/") %></td>
+              <td><%= link_to '確認', "/schedule/#{schedule.id}" ,class:"no_line show"%></td>
+              <td><%= link_to '編集', edit_admin_schedule_path(schedule.id), class:"no_line edit" %></td>
+              <td><%= link_to '削除',admin_schedule_path(schedule.id), method: :delete, data: { confirm: 'Are you sure?' } , class:"no_line destroy"%></td>
+              <%end%>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <% if current_user && current_user.admin?%>
+        <%= link_to '予定を追加', new_admin_schedule_path %> 
+      <% end %>
+
+      <%= month_calendar events: @schedules do |date, schedules| %>
+        <%= date.day %>
+
+        <% schedules.each do |schedule| %>
+          <div>
+            <%= link_to schedule.title, "/schedule/#{schedule.id}" %>
+            <div class="schedule_time">
+              <p><%= schedule.hour%>:</p>
+              <p><%= schedule.mini%>~</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="menu_block">
+    <div class="bottom">
+      <div class="content">
+        <%= link_to admin_players_path , class:"no-underline" do %>
+          <div class="img player"></div>
+          <div class="title">
+            <p>選手紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to about_path , class:"no-underline" do %>
+          <div class="img about"></div>
+          <div class="title">
+            <p>チーム紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to schedule_path , class:"no-underline" do %>
+          <div class="img schedule"></div>
+          <div class="title">
+            <p>日程</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to article_path , class:"no-underline" do %>
+          <div class="img article"></div>
+          <div class="title">
+            <p>記事一覧</p>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="top">
+      <%= link_to new_user_session_path do%>
+        <%= image_tag 'nit_logo.png',class:"img"%>
+      <%end%>
+      <div class="team_name">
+        <h3>名古屋工業大学</h3>
+        <p>University of Nagoya Institute of Techology</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="menu">
+        <ul>
+          <li>
+            <%= link_to("HOME", root_path,class:"no-underline",data: {"turbolinks" => false})%>
+          </li>
+          <li>
+            <%= link_to("最新記事", article_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("TEAMについて", about_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("日程", schedule_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("部員紹介", admin_players_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("アクセス", acssess_path, class:"no-underline")%>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p class="p_copyright">Copyright © University of Nagoya Institute of Techology.<br class="iphone_br"> All Rights Reserved.</p>
+        <p class="to_top">TOP</p>
+      </div>
+    </div>
+  </footer>
+</div>

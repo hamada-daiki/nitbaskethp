@@ -1,0 +1,105 @@
+<div class="wrapper_acssess">
+  <div class="main_container">
+    <div class="container">
+      <div class="detail">
+        <h3>交通アクセス</h3>
+        <table border="2">
+          <tr>
+            <td>JR東海</td>
+            <td>中央本線 鶴舞駅下車(名大病院口から東へ約400ｍ)</td>
+          </tr>
+          <tr>
+            <td>地下鉄</td>
+            <td>鶴舞線 鶴舞駅下車(4番出口から東へ約500ｍ)<br>
+            桜通線 吹上駅下車(5番出口から西へ約900ｍ)</td>
+          </tr>
+          <tr>
+            <td>市バス</td>
+            <td>栄18 名大病院下車(東へ約200ｍ)<br>
+            昭和巡回 名大病院下車(東へ約200ｍ)</td>
+          </tr>
+        </table>
+        <p>※「栄18」「昭和巡回」は市バスの系統名です</p>
+        <h3>お問い合わせ先</h3>
+        <p class="cap">キャプテン:中根大輝</p>
+        <p>メール:nakane@NIT_basketball.co.jp</p>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.98263670979!2d136.9229256152444!3d35.1570537803198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600370971a3cde13%3A0xbb16e801b5651df1!2z5ZCN5Y-k5bGL5bel5qWt5aSn5a2m!5e0!3m2!1sja!2sjp!4v1593954405156!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0",class="map"></iframe>
+    </div>
+  </div>
+  <div class="menu_block">
+    <div class="bottom">
+      <div class="content">
+        <%= link_to admin_players_path , class:"no-underline" do %>
+          <div class="img player"></div>
+          <div class="title">
+            <p>選手紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to about_path , class:"no-underline" do %>
+          <div class="img about"></div>
+          <div class="title">
+            <p>チーム紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to schedule_path , class:"no-underline" do %>
+          <div class="img schedule"></div>
+          <div class="title">
+            <p>日程</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to article_path , class:"no-underline" do %>
+          <div class="img article"></div>
+          <div class="title">
+            <p>記事一覧</p>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="top">
+      <%= link_to new_user_session_path do%>
+        <%= image_tag 'nit_logo.png',class:"img"%>
+      <%end%>
+      <div class="team_name">
+        <h3>名古屋工業大学</h3>
+        <p>University of Nagoya Institute of Techology</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="menu">
+        <ul>
+          <li>
+            <%= link_to("HOME", root_path,class:"no-underline",data: {"turbolinks" => false})%>
+          </li>
+          <li>
+            <%= link_to("最新記事", article_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("TEAMについて", about_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("日程", schedule_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("部員紹介", admin_players_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("アクセス", acssess_path, class:"no-underline")%>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p class="p_copyright">Copyright © University of Nagoya Institute of Techology.<br class="iphone_br"> All Rights Reserved.</p>
+        <p class="to_top">TOP</p>
+      </div>
+    </div>
+  </footer>
+</div>

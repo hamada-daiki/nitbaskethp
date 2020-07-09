@@ -1,0 +1,222 @@
+<div class="wrapper_player_index">
+  <div class="container">
+    <% if current_user && current_user.admin?%>
+      <%= link_to '選手追加', new_admin_player_path, class:"no_under_player"%>
+    <% end %>
+    <div class="years_block">
+      <% if @p_4year.length != 0 %>
+      <h3>4年</h3><br/>
+      <div class="players">
+        <% @p_4year.each do |p| %>
+          <div class="player">
+            <div class="top">
+             <% if p.img? %>
+               <img src=<%= p.img %> class = "img">
+             <% else %>
+                <div class="noimgbox">
+                  <h3>COMING SOON</h3>
+                </div>
+             <% end %>
+            </div>
+            <div class="bottom">
+              <p><%= p.position%>/<%= p.height%>cm/<%= p.from%></p>
+              <p>
+                <span class="number">#<%= p.number %></span>
+                <span><%= p.name%></span>(<%= p.year%>年)</p>
+                <% if current_user && current_user.admin? %>
+                  <div class="admin_box">
+                    <%= link_to '編集する', edit_admin_player_path(p), class:"no_under_player" %>
+                    <%= link_to '削除する', admin_player_path(p),method: :delete, data:{confirm: '本当に削除しますか?'}, class:"no_under_player delete"%>
+                  </div>
+                <%end%>
+            </div>
+          </div>
+        <% end %>
+        <% for i in 1..@sur4%>
+          <div class="player null"></div>
+        <%end%>
+      </div>
+      <%end%>
+    </div>
+    <div class="years_block">
+      <% if @p_3year.length != 0 %>
+      <h3>3年</h3><br/>
+      <div class="players">
+        <% @p_3year.each do |p| %>
+          <div class="player">
+            <div class="top">
+              <% if p.img? %>
+                <%= image_tag p.img.url,class:"img" %>
+             <% else %>
+                <div class="noimgbox">
+                  <h3>COMING SOON</h3>
+                </div>
+             <% end %>
+            </div>
+            <div class="bottom">
+              <p><%= p.position%>/<%= p.height%>cm/<%= p.from%></p>
+              <p>
+                <span class="number">#<%= p.number %></span>
+                <span><%= p.name%></span>(<%= p.year%>年)</p>
+                <% if current_user && current_user.admin? %>
+                  <div class="admin_box">
+                    <%= link_to '編集する', edit_admin_player_path(p), class:"no_under_player" %>
+                    <%= link_to '削除する', admin_player_path(p),method: :delete, data:{confirm: '本当に削除しますか?'}, class:"no_under_player delete"%>
+                  </div>
+                <%end%>
+            </div>
+          </div>
+        <% end %>
+        <% for i in 1..@sur3%>
+          <div class="player null"></div>
+        <%end%>
+      </div>
+      <%end%>
+    </div>
+    <div class="years_block">
+      <% if @p_2year.length != 0 %>
+      <h3>2年</h3><br/>
+      <div class="players">
+        <% @p_2year.each do |p| %>
+          <div class="player">
+            <div class="top">
+              <% if p.img? %>
+                <%= image_tag p.img.url,class:"img" %>
+             <% else %>
+                <div class="noimgbox">
+                  <h3>COMING SOON</h3>
+                </div>
+             <% end %>
+            </div>
+            <div class="bottom">
+              <p><%= p.position%>/<%= p.height%>cm/<%= p.from%></p>
+              <p>
+                <span class="number">#<%= p.number %></span>
+                <span><%= p.name%></span>(<%= p.year%>年)</p>
+                <% if current_user && current_user.admin? %>
+                  <div class="admin_box">
+                    <%= link_to '編集する', edit_admin_player_path(p), class:"no_under_player" %>
+                    <%= link_to '削除する', admin_player_path(p),method: :delete, data:{confirm: '本当に削除しますか?'}, class:"no_under_player delete"%>
+                  </div>
+                <%end%>
+            </div>
+          </div>
+        <% end %>
+        <% for i in 1..@sur2%>
+          <div class="player null"></div>
+        <%end%>
+      </div>
+      <%end%>
+    </div>
+    <div class="years_block">
+      <% if @p_1year.length != 0 %>
+      <h3>1年</h3><br/>
+      <div class="players">
+        <% @p_1year.each do |p| %>
+          <div class="player">
+            <div class="top">
+              <% if p.img? %>
+                <%= image_tag p.img.url,class:"img" %>
+             <% else %>
+                <div class="noimgbox">
+                  <h3>COMING SOON</h3>
+                </div>
+             <% end %>
+            </div>
+            <div class="bottom">
+              <p><%= p.position%>/<%= p.height%>cm/<%= p.from%></p>
+              <p>
+                <span class="number">#<%= p.number %></span>
+                <span><%= p.name%></span>(<%= p.year%>年)</p>
+                <% if current_user && current_user.admin? %>
+                  <div class="admin_box">
+                    <%= link_to '編集する', edit_admin_player_path(p), class:"no_under_player" %>
+                    <%= link_to '削除する', admin_player_path(p),method: :delete, data:{confirm: '本当に削除しますか?'}, class:"no_under_player delete"%>
+                  </div>
+                <%end%>
+            </div>
+          </div>
+        <% end %>
+        <% for i in 1..@sur1%>
+          <div class="player null"></div>
+        <%end%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="menu_block">
+    <div class="bottom">
+      <div class="content">
+        <%= link_to admin_players_path , class:"no-underline" do %>
+          <div class="img player"></div>
+          <div class="title">
+            <p>選手紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to about_path , class:"no-underline" do %>
+          <div class="img about"></div>
+          <div class="title">
+            <p>チーム紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to schedule_path , class:"no-underline" do %>
+          <div class="img schedule"></div>
+          <div class="title">
+            <p>日程</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to article_path , class:"no-underline" do %>
+          <div class="img article"></div>
+          <div class="title">
+            <p>記事一覧</p>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="top">
+      <%= link_to new_user_session_path do%>
+        <%= image_tag 'nit_logo.png',class:"img"%>
+      <%end%>
+      <div class="team_name">
+        <h3>名古屋工業大学</h3>
+        <p>University of Nagoya Institute of Techology</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="menu">
+        <ul>
+          <li>
+            <%= link_to("HOME", root_path,class:"no-underline",data: {"turbolinks" => false})%>
+          </li>
+          <li>
+            <%= link_to("最新記事", article_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("TEAMについて", about_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("日程", schedule_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("部員紹介", admin_players_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("アクセス", acssess_path, class:"no-underline")%>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p class="p_copyright">Copyright © University of Nagoya Institute of Techology.<br class="iphone_br"> All Rights Reserved.</p>
+        <p class="to_top">TOP</p>
+      </div>
+    </div>
+  </footer>
+</div>

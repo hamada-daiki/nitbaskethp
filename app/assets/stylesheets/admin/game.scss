@@ -1,0 +1,34 @@
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+.game_wrapper{
+  padding: 0 20px;
+  h4{
+    font-weight: bold;
+  }//h4
+  label{
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-size: 1.6rem;
+  }//label
+  #game_place,#game_title,#game_opponent{
+    margin-bottom: 10px;
+  }//#game_place,#game_title,#game_opponent
+}//game_wrapper

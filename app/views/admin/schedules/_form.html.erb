@@ -1,0 +1,22 @@
+<%= form_with(model: [ :admin, @schedule ], local: true) do |f|%>
+<div class="schedule_wrapper">
+  <div class="field">
+    <%= f.label :title,"予定名"%>
+    <%= f.text_field :title%>
+  </div>
+
+  <div class="field">
+    <%= f.label :body,"予定内容(空欄可)"%>
+    <%= f.text_area :body, rows: 10%>
+  </div>
+
+  <div class="field time">
+    <%= f.label :start_time, "開始時間"%>
+    <%= f.datetime_select :start_time,:use_month_numbers => true %><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit%>
+  </div>
+</div>
+<%end%>

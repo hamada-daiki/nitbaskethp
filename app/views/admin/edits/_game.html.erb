@@ -1,0 +1,19 @@
+<%= form_with(model: game,url: admin_game_path, local: true) do |f|%>
+  <div class="game_wrapper">
+    <h4>日程</h4>
+    <%= f.datetime_select :date,:use_month_numbers => true %><br>
+
+    <%= f.label :place, "会場"%><br>
+    <%= f.text_field :place %><br>
+
+    <%= f.label :title, "大会名"%><br>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :opponent, "対戦相手"%><br>
+    <%= f.text_field :opponent%><br>
+
+    <div class="actions">
+      <%= f.submit%>
+    </div>
+  </div>
+<%end%>

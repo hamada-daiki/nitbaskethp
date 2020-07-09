@@ -22,12 +22,20 @@ $sp: 480px;  // スマホ
   width: 100%;
   position: absolute;
   top: 0;
+  @include tab{
+    top: 80px;
+  }
   .slider{
     .img{
       width: 100px;
       height: 600px;
+      @include tab{
+        width: 100%;
+        height: 300px;
+      }
     }//img
   }//slider
+
   .container{
     width: 100%;
     // height: 800px;
@@ -35,10 +43,18 @@ $sp: 480px;  // スマホ
     flex-direction: column;
     .top{
       display: flex;
+      @include tab{
+        display: flex;
+        flex-direction: column;
+      }
       .main{
         padding: 0 10px;
         flex-basis: 75%;
         height: 600px;
+        @include tab{
+          height: 800px;
+          flex-basis: auto;
+        }
         .game_schedule{
           display: flex;
           flex-direction: column;
@@ -54,30 +70,89 @@ $sp: 480px;  // スマホ
             border-left: 4px solid rgba(110,0,10,1);
             border-right: 4px solid rgba(110,0,10,1);
             color: white;
+            @include tab{
+              width: 50%;
+            }
             p{
               margin-bottom: 0;
               font-size: 1.6rem;
             }//p
+            .edit{
+              background-color: rgba(0,255,255,0.9);
+              transition: 0.3s;
+              .no-underline{
+                text-decoration:none !important;
+                color: white;
+              }//no-underline
+              p{
+                font-weight: normal;
+                font-size: 1.0rem;
+              }//p
+            }//edit
+            .edit:hover{
+              background-color: rgba(0,255,255,0.4);
+            }//edit:hover
           }//game_top
           .game_bottom{
             width: 100%;
             padding: 20px;
-            // flex-basis: 70%;
             text-align: center;
             border: 4px solid rgba(110,0,10,1);
+            display: flex;
+            flex-direction: column;
+            @include tab{
+              display: none;
+            }
             p{
               margin-bottom: 0;
               font-size: 1.6rem;
             }//p
-            .detail{
-              margin-bottom: 0;
-              font-size: 1.4rem;
-              font-weight: normal;
-              .mgr-30{
-                margin: 0 30px;
-              }//mgr-30
-            }//detail
+            .detail_top{
+              display: flex;
+              justify-content: center;
+              width: 100%;
+              p{
+                border: 2px solid rgba(0,0,0,0.7);
+                border-bottom: 0px;
+                font-weight: normal;
+              }//p
+              .day,.time{
+                flex: 20%;
+                border-right: 0px;
+              }//.day,.time
+              .place{
+                flex: 60%;
+              }//.place
+            }//detail_top
+            .detail_bottom{
+              width:100%;
+              p{
+                border: 2px solid rgba(0,0,0,0.7);
+              }//p
+            }//detail_bottom
           }//game_bottom
+          .game_bottom_iphone{
+            display: none;
+            @include tab{
+              display: block;
+            }
+            .detail{
+              display: flex;
+              flex-direction: column;
+              // padding: 10px;
+              border: 4px solid rgba(110,0,10,1);
+              p{
+                padding: 5px 10px;
+                border-bottom: 2px solid rgba(208,134,1,255);
+                margin-bottom: 0;
+                font-weight: normal;
+              }//p
+              p:last-child{
+                border-bottom: 0px;
+                font-weight: bold;
+              }//p:last-child
+            }//detail
+          }//game_bottom_iphone
         }//game_schedule
         .newinfo{
           margin-top: 30px;
@@ -96,45 +171,108 @@ $sp: 480px;  // スマホ
             border-left: 4px solid rgba(110,0,10,1);
             border-right: 4px solid rgba(110,0,10,1);
             color: white;
+            @include tab{
+              width: 50%;
+            }
             p{
               margin-bottom: 0;
               font-size: 1.6rem;
             }//p
+            .article_add{
+              background-color: rgba(0,255,255,0.9);
+              transition: 0.3s;
+              .no-underline{
+                text-decoration:none !important;
+                color: white;
+                transition-duration: 0.7s;
+              }//no-underline
+              p{
+                font-weight: normal;
+                font-size: 1.0rem;
+              }//p
+            }//edit
+            .article_add:hover{
+              background-color: rgba(0,255,255,0.4);
+            }//edit:hover
           }//newinfo_top
           .newinfo_bottom{
             width: 100%;
             border: 4px solid rgba(110,0,10,1);
             height: 300px;
             overflow-y: scroll;
-            .article{
-              padding-top: 15px;
+            @include tab{
+              height: 600px;
+            }
+            .no-underline{
+              text-decoration:none !important;
+              color: rgba(110,0,10,1);;
+            }//no-underline
+            .post{
+              // padding-top: 15px;
+              padding: 7px 0;
               display: flex;
               font-size: 1.1rem;
               font-weight: normal;
-              .day{
-                margin-bottom: 0px;
+              transition: 0.3s;
+              @include tab{
+                width: 100%;
+                padding: 20px 10px;
+                flex-wrap: wrap;
+                // border-bottom: 1px solid rgba(208,134,1,255);
               }
+              .day{
+                margin-left: 10px;
+                margin-bottom: 0px;
+                @include tab{
+                  width: 30%;
+                }
+              }//day
               .category{
                 margin-bottom: 0px;
                 background-color: rgba(110,0,10,1);
                 color: white;
                 width: 150px;
                 text-align: center;
+                @include tab{
+                  width: 100px;
+                  margin-right: 10px;
+                }
               }//category
-              .text{
+              .category_iphone{
+                display: none;
+                @include  tab{
+                  display: inline-block;
+                  margin-bottom: 0px;
+                  margin-right: 10px;
+                  background-color: rgba(110,0,10,1);
+                  color: white;
+                  width: 100px;
+                  text-align: center;
+                }
+              }//category_iphone
+              .title{
                 margin-bottom: 0px;
                 width: 450px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                @include tab{
+                  padding-left: 10px;
+                }
               }//text
               p{
                 margin-right: 20px;
               }//p
-            }//article
-            .article:first-child{
-              padding-top: 30px;
-            }
+              p:last-child{
+                @include tab{
+                  border-bottom: 1px solid rgba(208,134,1,255);
+                }
+              }//last-child
+            }//post
+            .post:hover{
+              background-color: rgba(208,134,1,0.7);
+              border-radius: 50px;
+            }//post:hover
           }//newinfo_bottom
         }//newinfo
       }//main
@@ -142,6 +280,10 @@ $sp: 480px;  // スマホ
         flex-basis: 25%;
         height: 600px;
         margin-left: 10px;
+        @include tab{
+          margin-left: 0px;
+          margin-top: 50px;
+        }
       }//side
     }//top
     .bottom{
@@ -151,6 +293,10 @@ $sp: 480px;  // スマホ
       margin-bottom: 30px;
       display: flex;
       justify-content: center;
+      @include tab{
+        flex-direction: column;
+        height: 1000px;
+      }
       .content{
         height: 250px;
         margin-right: 10px;
@@ -205,6 +351,9 @@ $sp: 480px;  // スマホ
       }//content
       .content:last-child{
         margin-right: 0;
+        @include tab{
+          margin-right: 10px;
+        }
       }//content:last-child
     }//bottom
   }//container

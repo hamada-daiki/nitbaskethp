@@ -10,8 +10,13 @@ gem 'mysql2', '>= 0.4.4'
 
 gem 'rubocop'
 gem 'rubocop-rails'
+gem 'bxslider-rails'
+gem 'devise'
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'mini_magick'
 
 gem 'jquery-rails'
+gem 'simple_calendar', '~> 2.0'
 
 gem 'dotenv-rails'
 # Use Puma as the app server

@@ -1,0 +1,27 @@
+<%= form_with(model: [ :admin, @post ], local: true) do |f|%>
+<div class="post_wrapper">
+  <div class="field">
+    <%= f.label :title,"タイトル"%>
+    <%= f.text_field :title%>
+  </div>
+
+  <div class="field">
+    <%= f.label :body,"本文"%>
+    <%= f.text_area :body, rows: 10%>
+  </div>
+
+  <div class="field">
+    <%= f.label :img, "画像"%>
+    <%= f.file_field :img, class: "image" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category, "ジャンル"%>
+    <%= f.select :category, ["NEWS","試合結果","試合予定","関係者"]%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit%>
+  </div>
+</div>
+<%end%>

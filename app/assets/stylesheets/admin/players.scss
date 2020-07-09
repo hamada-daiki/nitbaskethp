@@ -1,0 +1,228 @@
+// Place all the styles related to the admin::players controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+//----------views/admin/players/index.html.erb------
+.wrapper_player_index{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .no_under_player{
+      text-decoration: none !important;
+      color: white;
+      width: 15%;
+      text-align: center;
+      background-color: rgba(0,150,255,1);
+      padding: 5px 10px;
+      border-radius: 20px;
+    }//no_under_player
+    .delete{
+      background: rgba(250,10,10,1);
+    }//delete
+    .years_block{
+      width: 100%;
+      h3{
+        border-bottom: 3px solid rgba(110,0,10,1);
+      }//h3
+      .players{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        @include tab{
+          flex-direction: column;
+        }
+        .player{
+          width: 20%;
+          height: 400px;
+          margin: 10px;
+          margin-bottom: 30px;
+          border: 1px solid rgba(110,0,10,1);
+          @include tab{
+            width: 100%;
+            margin-left: 0;
+          }
+          .top{
+            height: 300px;
+            width: 100%;
+            .img{
+              height: 300px;
+              width: 100%;
+              object-fit: cover;
+              // font-family: 'object-fit: cover;'
+            }//img
+            .noimgbox{
+              background: image-url('default.png');
+              background-color:rgba(255,255,255,0.6);
+              background-blend-mode:lighten;
+              width: 100%;
+              height: 100%;
+              background-size: cover;
+              z-index: 1;
+              text-align: center;
+              h3{
+                font-family: arial black;
+                font-weight: 900;
+                padding-top: 150px;
+              }//h3
+            }//noimgbox
+          }//top
+          .bottom{
+            padding-top: 20px;
+            height: 100px;
+            width: 100%;
+            text-align: center;
+            .number{
+              color: white;
+              padding: 7px 2px;
+              background-color: rgba(110,0,10,1);
+            }//number
+          }//bottom
+        }//player
+        .null{
+          height: 0;
+          border: 0px;
+        }//null
+      }//players
+    }//years_block
+  }//container
+  .menu_block{
+    display: flex;
+    margin: 35px 0 70px 0;
+    @include tab{
+      flex-direction: column;
+    }
+    .bottom{
+      width:100%;
+      height: 250px;
+      padding: 0px 100px;
+      display: flex;
+      justify-content: center;
+      @include tab{
+        flex-direction: column;
+        height: 1000px;
+        padding: 0px;
+        top: 1900px;
+      }
+      .content{
+        height: 250px;
+        margin-right: 10px;
+        flex-basis: 25%;
+        display: flex;
+        flex-direction: column;
+        @include tab{
+          margin-left: 10px;
+        }
+        .no-underline{
+          text-decoration:none !important;
+          color: rgba(0,0,0,0.8);
+          transition-duration: 0.7s;
+        }//no-underline
+        .no-underline:hover{
+          text-decoration:none !important;
+          color: rgba(210,0,10,1);
+        }//no-underline:hover
+        .player{
+          background: image-url('content3.jpeg');
+        }//player
+        .about{
+          background: image-url('content4.jpeg');
+        }//about
+        .schedule{
+          background: image-url('content2.jpeg');
+        }//schedule
+        .article{
+          background: image-url('content1.jpeg');
+        }//article
+        .img{
+          // background: image-url('content3.jpeg');
+          width: calc(100%);
+          height: 200px;
+          background-size: cover;
+          z-index: 1;
+          transition-duration: 0.3s;
+        }//img
+        .img:hover{
+          background-color:rgba(255,255,255,0.3);
+          background-blend-mode:lighten;
+          width: calc(100%);
+          height: 200px;
+          background-size: cover;
+          z-index: 1;
+        }//img:hover
+        p{
+          margin-bottom: 0;
+          padding: 10px 0 10px 10px;
+          font-weight: bold;
+          border-left: 1px solid rgba(110,0,10,1);
+          border-right: 1px solid rgba(110,0,10,1);
+          border-bottom: 1px solid rgba(110,0,10,1);
+        }//p
+      }//content
+      .content:last-child{
+        margin-right: 0;
+        @include tab{
+          margin-right: 10px;
+        }
+      }//content:last-child
+    }//bottom
+  }//.menu_block
+}//wrapper_player_index
+
+
+//----------views/admin/players/new.html.erb------
+.p_new_wrapper{
+  display: flex;
+  flex-direction: column;
+  .explain{
+    padding: 20px;
+  }//explain
+}//p_new_wrapper
+
+//----------views/admin/players/_player.html.erb------
+.player_wrapper{
+  padding: 0 20px;
+  .field{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h4{
+      font-weight: bold;
+    }//h4
+    label{
+      margin-bottom: 0px;
+      font-weight: bold;
+      font-size: 1.6rem;
+    }//label
+    #player_position,#player_year{
+      width: 100px;
+    }//player_position
+  }//field
+  .actions{
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }//actions
+}//player_wrapper

@@ -1,0 +1,103 @@
+<div class="wrapper_post_show">
+  <div class="main_container">
+    <div class="container">
+      <div class="top">
+        <h3><%= @post.title%></h3>
+        <p class="day"><%= @post.created_at.strftime('%Y.%m.%d') %></p>
+        <p class="category">テーマ:<%= @post.category%></p>
+        <p><%= simple_format(@post.body)%></p>
+        <% if @post.img?%>
+          <div class="img_box">
+            <img src=<%= @post.img %> class = "post-image">
+          </div>
+        <% end %>
+      </div>
+      <% if current_user && current_user.admin? %>
+        <%= link_to '編集する', edit_admin_post_path(@post), class:"no-underline_edit" %>
+        <%= link_to '削除する', admin_post_path(@post), method: :delete, data: {
+          confirm: '本当に削除しますか?'
+        }, class:"no-underline_delete"%>
+      <%end%>
+    </div>
+    <div class="container_side">
+      <div class="side">
+        <a class="twitter-timeline" data-width="400" data-height="600" href="https://twitter.com/NIT_basketball?ref_src=twsrc%5Etfw">Tweets by NIT_basketball</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+  <div class="menu_block">
+    <div class="bottom">
+      <div class="content">
+        <%= link_to admin_players_path , class:"no-underline" do %>
+          <div class="img player"></div>
+          <div class="title">
+            <p>選手紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to about_path , class:"no-underline" do %>
+          <div class="img about"></div>
+          <div class="title">
+            <p>チーム紹介</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to schedule_path , class:"no-underline" do %>
+          <div class="img schedule"></div>
+          <div class="title">
+            <p>日程</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="content">
+        <%= link_to article_path , class:"no-underline" do %>
+          <div class="img article"></div>
+          <div class="title">
+            <p>記事一覧</p>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="top">
+      <%= link_to new_user_session_path do%>
+        <%= image_tag 'nit_logo.png',class:"img"%>
+      <%end%>
+      <div class="team_name">
+        <h3>名古屋工業大学</h3>
+        <p>University of Nagoya Institute of Techology</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="menu">
+        <ul>
+          <li>
+            <%= link_to("HOME", root_path,class:"no-underline",data: {"turbolinks" => false})%>
+          </li>
+          <li>
+            <%= link_to("最新記事", article_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("TEAMについて", about_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("日程", schedule_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("部員紹介", admin_players_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("アクセス", acssess_path, class:"no-underline")%>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p class="p_copyright">Copyright © University of Nagoya Institute of Techology.<br class="iphone_br"> All Rights Reserved.</p>
+        <p class="to_top">TOP</p>
+      </div>
+    </div>
+  </footer>
+</div>

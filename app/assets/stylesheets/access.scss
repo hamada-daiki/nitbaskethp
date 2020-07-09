@@ -1,0 +1,58 @@
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// -------views/home/access.html.erb-----
+.wrapper_acssess{
+  width: 100%;
+  .main_container{
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    .container{
+      display: flex;
+      @include tab{
+        flex-direction: column;
+      }
+      .detail{
+        flex-direction: column;
+        h3{
+          border-bottom: 2px solid rgba(110,0,10,1.0);
+          margin-right: 30px;
+          @include tab{
+            margin-right: 0;
+          }
+        }//h3
+        table{
+          margin-top: 30px;
+          margin-right: 30px;
+          @include tab{
+            margin-right: 0;
+          }
+          td{
+            padding: 10px;
+          }//td
+        }//table
+        .cap{
+          margin-bottom: 0px;
+        }//.cap
+      }//.detail
+    }//.container
+  }//.main_container
+}//.wrapper_access

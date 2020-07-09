@@ -1,0 +1,46 @@
+<h3>管理者様へ~注意点~</h3>
+<p>・タイトルは2文字~100文字以内で記載してください</p>
+<p>・本文は1文字~1200文字以内で記載してください</p>
+<p>・画像は無くても大丈夫です</p>
+<p>・ジャンルも選択してください</p>
+<%= render 'post',post: @post%>
+<%= link_to 'Home', root_path, class:"no-underline_home"%>
+<footer class="footer">
+  <div class="top">
+    <%= link_to new_user_session_path do%>
+      <%= image_tag 'nit_logo.png',class:"img"%>
+    <%end%>
+    <div class="team_name">
+      <h3>名古屋工業大学</h3>
+      <p>University of Nagoya Institute of Techology</p>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="menu">
+      <ul>
+        <li>
+          <%= link_to("HOME", root_path,class:"no-underline",data: {"turbolinks" => false})%>
+        </li>
+        <li>
+          <%= link_to("最新記事", article_path, class:"no-underline")%>
+        </li>
+        <li>
+          <%= link_to("TEAMについて", about_path, class:"no-underline")%>
+        </li>
+        <li>
+          <%= link_to("日程", schedule_path, class:"no-underline")%>
+        </li>
+        <li>
+          <%= link_to("部員紹介", admin_players_path, class:"no-underline")%>
+        </li>
+        <li>
+          <%= link_to("アクセス", acssess_path, class:"no-underline")%>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright">
+      <p class="p_copyright">Copyright © University of Nagoya Institute of Techology.<br class="iphone_br"> All Rights Reserved.</p>
+      <p class="to_top">TOP</p>
+    </div>
+  </div>
+</footer>

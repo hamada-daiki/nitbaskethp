@@ -4,73 +4,62 @@
     <%= image_tag 'top2.jpg',class:"img"%>
     <%= image_tag 'top3.jpg',class:"img"%>
   </div>
+  <!-- koko -->
   <div class="container">
     <div class="top">
       <div class="main">
         <div class="game_schedule">
           <div class="game_top">
             <p>試合予定</p>
+            <% if current_user && current_user.admin%>
+              <div class="edit">
+                <%= link_to admin_game_path,class:"no-underline" do%>
+                <p>編集する</p>
+                <%end%>
+              </div>
+            <%end%>
           </div>
           <div class="game_bottom">
-            <p class="detail"><span class="mgr-30">日付:2020.04.21</span>時間:14:20~ <span class="mgr-30">会場:名古屋工業大学</span></p><br>
-            <p>東海学生リーグ戦 第6節 VS 名古屋工業大学</p>
+            <div class="detail_top">
+              <p class="day"><%= @game.year%>.<%= @game.month%>.<%= @game.day%></p>
+              <p class="time"><%= @game.hour%>:<%= @game.mini%>~</p>
+              <p class="place"><%= @game.place%></p>
+            </div>
+            <div class="detail_bottom">
+              <p><%= @game.title%> VS <%= @game.opponent%></p>
+            </div>
+          </div>
+          <div class="game_bottom_iphone">
+            <div class="detail">
+              <p><%= @game.year%>.<%= @game.month%>.<%= @game.day%> <%= @game.hour%>:<%= @game.mini%>~</p>
+              <p>会場:<%= @game.place%></p>
+              <p><%= @game.title%> <br>VS <%= @game.opponent%></p>
+            </div>
           </div>
         </div>
         <div class="newinfo">
-          <div class="newinfo_top"><p>最新情報</p></div>
+          <div class="newinfo_top">
+            <p>最新情報</p>
+            <% if current_user && current_user.admin%>
+              <div class="article_add">
+                <%= link_to new_admin_post_path, class:"no-underline" do%>
+                <p>記事追加</p>
+                <%end%>
+              </div>
+            <%end%>
+          </div>
           <div class="newinfo_bottom">
-            <ul>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">2020年OB会中止のご報告</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-              <li class="article">
-                <p class="day">2020.04.21</p>
-                <p class="category">最新情報</p>
-                <p class="text">第59回東海学生トーナメントの試合結果ssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-              </li>
-            </ul>
+            <% if @posts %>
+              <% @posts.each do |p| %>
+                <%= link_to admin_post_path(p) , class:"no-underline" do %>
+                  <div class="post">
+                    <p class="day"><%= p.created_at.strftime('%Y.%m.%d') %></p>
+                    <p class="category"><%= p.category%></p>
+                    <p class="title"><%= p.title%></p>
+                  </div>
+                <%end%>
+              <%end%>
+            <%end%>
           </div>
         </div>
       </div>
@@ -80,7 +69,7 @@
     </div>
     <div class="bottom">
       <div class="content">
-        <%= link_to member_path , class:"no-underline" do %>
+        <%= link_to admin_players_path , class:"no-underline" do %>
           <div class="img player"></div>
           <div class="title">
             <p>選手紹介</p>
@@ -113,4 +102,43 @@
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <div class="top">
+      <%= link_to new_user_session_path do%>
+        <%= image_tag 'nit_logo.png',class:"img"%>
+      <%end%>
+      <div class="team_name">
+        <h3>名古屋工業大学</h3>
+        <p>University of Nagoya Institute of Techology</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="menu">
+        <ul>
+          <li>
+            <%= link_to("HOME", root_path,class:"no-underline",data: {"turbolinks" => false})%>
+          </li>
+          <li>
+            <%= link_to("最新記事", article_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("TEAMについて", about_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("日程", schedule_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("部員紹介", admin_players_path, class:"no-underline")%>
+          </li>
+          <li>
+            <%= link_to("アクセス", acssess_path, class:"no-underline")%>
+          </li>
+        </ul>
+      </div>
+      <div class="copyright">
+        <p class="p_copyright">Copyright © University of Nagoya Institute of Techology.<br class="iphone_br"> All Rights Reserved.</p>
+        <p class="to_top">TOP</p>
+      </div>
+    </div>
+  </footer>
 </div>
