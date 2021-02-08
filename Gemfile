@@ -12,7 +12,7 @@ gem 'rubocop'
 gem 'rubocop-rails'
 gem 'bxslider-rails'
 gem 'devise'
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick'
 
 gem 'jquery-rails'
